@@ -16,7 +16,7 @@ const nextBtn = document.getElementById('nextBtn');
 const toggleBtn = document.getElementById('modeToggle');
 
 /*********************
- * Build gallery (pakai gambar dari folder "images" atau root)
+ * Build gallery (pakai gambar di root)
  *********************/
 const TOTAL = 26; // ubah sesuai jumlah foto Anda
 const sizeClasses = ['small','medium','large'];
@@ -35,7 +35,7 @@ for (let i = 1; i <= TOTAL; i++) {
   const scaleVal = (rand(0.92, 1.08)).toFixed(3);
   div.style.setProperty('--scale', scaleVal);
 
-  // Flexible: coba jpg, jpeg, png di folder images/, lalu fallback ke root
+  // coba jpg, jpeg, png di root, kalau gagal pakai no-image.png
   const img = document.createElement('img');
   const extensions = ['jpg', 'jpeg', 'png'];
   let tryIndex = 0;
@@ -45,8 +45,7 @@ for (let i = 1; i <= TOTAL; i++) {
       img.src = `foto${i}.${extensions[tryIndex]}`;
       tryIndex++;
     } else {
-      // fallback ke root (default .jpg)
-      img.src = `foto${i}.jpg`;
+      img.src = `no-image.png`; // fallback
     }
   }
 
@@ -68,7 +67,7 @@ let currentIndex = 0;
 function showImage(index) {
   const node = frames[index];
   if (!node) return;
-  overlayImg.src = node.src;
+  overlayImg.src = node.src || 'no-image.png';
   overlay.style.display = 'flex';
 }
 
@@ -116,11 +115,13 @@ let carouselIndex = 0;
 let isAnimating = false;
 const SWIPE_THRESHOLD = 30;
 
-// initialize carousel
-if (frames && frames.length) {
+// initialize carousel dengan fallback no-image
+if (frames && frames.length && frames[0].src) {
   carouselImage.src = frames[0].src;
-  carouselIndex = 0;
+} else {
+  carouselImage.src = 'no-image.png';
 }
+carouselIndex = 0;
 
 function makeCloneForCarousel(imgNode) {
   const clone = imgNode.cloneNode(true);
@@ -139,7 +140,7 @@ function setCarouselIndex(idx, direction = 0) {
 
   if (direction === 0 || isAnimating === true) {
     if (direction === 0 && !isAnimating) {
-      carouselImage.src = frames[newIndex].src;
+      carouselImage.src = frames[newIndex]?.src || 'no-image.png';
       carouselIndex = newIndex;
     }
     return;
@@ -149,8 +150,9 @@ function setCarouselIndex(idx, direction = 0) {
   isAnimating = true;
 
   const oldImg = carouselImage;
-  const newImg = makeCloneForCarousel(frames[newIndex]);
+  const newImg = makeCloneForCarousel(frames[newIndex] || { src: 'no-image.png' });
 
+  newImg.src = frames[newIndex]?.src || 'no-image.png';
   newImg.style.left = (direction > 0) ? "100%" : "-100%";
   newImg.style.transition = "left 360ms ease";
   oldImg.style.transition = "transform 360ms ease";
