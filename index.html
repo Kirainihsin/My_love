@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Monochrome Memories — Polaroid with Paper Texture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1 class="title-with-love">
+      My World
+      <span class="falling-hearts">
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+      </span>
+    </h1>
+    <p>For my little princess, who is always on my mind and forever in my heart. No matter where I go or what I do, you are the reason behind my smile</p>
+
+    <!-- Ornamen sudut bawah -->
+    <span class="corner left"></span>
+    <span class="corner right"></span>
+  </header>
+
+  <!-- WRAPPER dengan GIF kiri & kanan -->
+  <div class="carousel-with-gif">
+    <!-- GIF kiri -->
+    <img src="animation1.gif" alt="GIF kiri carousel" class="side-gif left-gif">
+
+    <!-- SINGLE IMAGE CAROUSEL -->
+    <div class="single-carousel-wrap" id="singleCarousel" aria-label="Featured photo carousel">
+      <button class="single-carousel-btn prev" id="carouselPrev" aria-label="Previous photo">&#10094;</button>
+      <img class="single-carousel-img" id="carouselImage" src="" alt="Featured photo">
+      <button class="single-carousel-btn next" id="carouselNext" aria-label="Next photo">&#10095;</button>
+    </div>
+
+    <!-- GIF kanan -->
+    <img src="animation6.gif" alt="GIF kanan carousel" class="side-gif right-gif">
+  </div>
+
+  <!-- toggle mode -->
+  <button id="modeToggle" class="mode-toggle" aria-pressed="true">⚪</button>
+
+  <!-- GALLERY -->
+  <div class="gallery" id="gallery"></div>
+
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay">
+    <span class="close-btn" id="closeBtn">&times;</span>
+    <span class="nav-btn prev" id="prevBtn">&#10094;</span>
+    <img id="overlayImg" src="" alt="Fullscreen">
+    <span class="nav-btn next" id="nextBtn">&#10095;</span>
+  </div>
+
+  <!-- NOTE SECTION dengan GIF kiri & kanan -->
+  <div class="note-with-gif">
+    <!-- GIF kiri -->
+    <img src="animation4.gif" alt="GIF kiri catatan" class="note-side-gif note-left">
+
+    <!-- Catatan -->
+    <section class="mm-note-section" id="mmNoteSection" aria-label="Note section">
+      <span class="mm-note-section__stripe" aria-hidden="true"></span>
+      <h2>Notes</h2>
+      <p>
+        "Cyaa sayang, 8 bulan kita udah saling kenal satu sama lain. sebelumnya maafin aku ya sayang aku sering bikin kamu nangis sama marah, maaf sampai sekarang aku belum bisa ngasih apa apa ke kamu, aku harap kamu tau aku bener bener sayang sama kamu semoga kita terus belajar yaa dan kita terus saling sayang buat ke depannya. aku percaya banget yang nama nya rasa sayang itu bakal berkembang kalo kita memang betul betul saling mencintai. semoga kita bisa saling nerima kekurangan satu sama lain yaa sayang. "tapi sejauh ini kamu udahh sempurna banget sih buat aku hehe" sekali lagi makasih yaa sayang"
+      </p>
+    </section>
+
+    <!-- GIF kanan -->
+    <img src="animation3.gif" alt="GIF kanan catatan" class="note-side-gif note-right">
+  </div>
+
+  <!-- VIDEO SECTION -->
+  <section class="mm-video-section" id="mmVideoSection" aria-label="Video section">
+    <div class="mm-video-grid" role="list">
+      <article class="mm-video-card" role="listitem" aria-label="Video 1">
+        <div class="mm-video-frame">
+          <iframe loading="lazy" src="kiyut1.mp4" title="Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="mm-video-card" role="listitem" aria-label="Video 2">
+        <div class="mm-video-frame">
+          <iframe loading="lazy" src="kiyut2.mp4" title="Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="mm-video-card" role="listitem" aria-label="Video 3">
+        <div class="mm-video-frame">
+          <iframe loading="lazy" src="kiyut3.mp4" title="Video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
